@@ -11,5 +11,5 @@ app.get("/test", async(req: Request, res: Response) => {
 });
 
 app.listen(7000, () => {
-    console.log("Server is running on localhost:7000");
+    console.log("Server is running on localhost:5000");
 })
