@@ -1,7 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import {AppState, Auth0Provider, User} from "@auth0/auth0-react";
-import { useCreateMyUser } from '@/api/MyUserApi';
+import { useCreateMyUser } from './api/MyUserApi';
 import { useNavigate } from 'react-router-dom';
 
 function Auth0ProviderWithNavigation(props: { children: React.ReactNode}) {
@@ -18,7 +18,7 @@ function Auth0ProviderWithNavigation(props: { children: React.ReactNode}) {
 
     //redirected to CalEat.com from Auth login
     const onRedirectCallBack = {/*(appState?: AppState, user?: User)*/} => {
-        console.log("USER", user); 
+        console.log("User", user); 
     //initialize call to backend
         navigate("/auth-callback");
     };

@@ -3,14 +3,22 @@ import React from 'react'
 import landingImage from "../assets/image1.png"; 
 import appDownloadImage from "../assets/image4.png"; 
 
+
 const HomePage = () => {
+    const navigate = useNavigate(); 
+    const handleSearchSubmit = (searchFormValues: SearchForm) => {
+        Navigate({
+            pathname: `${/search/searchFormValues.searchQuery}`
+        })
+    } }
     return (
         <div className="flex flex-col gap-12">
-            <div className="bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
+            <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
                 <h1 className="text-5x1 font-bold tracking-tight text-pink-600">
                     Order with your Calories in Mind! 
                 </h1>
                 <span className="text-x1">Tracking your goals on the made easier!</span>
+                <SearchBar placeholder="Search by City or Town" onSubmit={handleSearchSubmit} />
             </div>
             <div className="grid md:grid-cols-2 gap-5">
                 <img src={landingImage} />
