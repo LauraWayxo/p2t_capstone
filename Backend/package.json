@@ -4,9 +4,10 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "dev": "nodemon", 
-    "build" : "npm install && npx tsc", 
-    "start" : "node dist/index.js"
+    "dev": "concurrently \"nodemon\" \"npm run stripe\"",
+    "stripe" : "stripe listen --forward-to localhost:7000/api/order/checkout/webhook",
+    "build": "npm install && npx tsc",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/LauraWayxo/p2t_capstone#readme",
   "dependencies": {
+    "@types/multer": "^1.4.12",
+    "cloudinary": "^2.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -27,7 +30,9 @@
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.15.0",
-    "mongoose": "^8.13.0"
+    "mongoose": "^8.13.0",
+    "multer": "^1.4.5-lts.2",
+    "stripe": "^17.7.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
