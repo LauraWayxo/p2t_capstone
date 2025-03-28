@@ -2,25 +2,25 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 import {AppState, Auth0Provider, User} from "@auth0/auth0-react";
 import { useCreateMyUser } from '@/api/MyUserApi';
+import { useNavigate } from 'react-router-dom';
 
 function Auth0ProviderWithNavigation(props: { children: React.ReactNode}) {
-    const { createUser } = useCreateMyUser(); 
+    const navigate = useNavigate();
 
     const domain = import.meta.env.VITE_AUTH0_DOMAIN; 
     const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID; 
     const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL; 
+    const audience = import.meta.env.VITE_AUTH0_AUDIENCE; 
 
     if (!domain || !clientId || !redirectUri) {
         throw new Error('Unable to initialize auth');
     }
 
     //redirected to CalEat.com from Auth login
-    const onRedirectCallBack = (appState?: AppState, user?: User) => {
-        // console.log("USER", user); 
+    const onRedirectCallBack = {/*(appState?: AppState, user?: User)*/} => {
+        console.log("USER", user); 
     //initialize call to backend
-        if(user?.sub && user?.email) {
-            createUser({ auth0Id: user.sub, email: user.email })
-        }
+        navigate("/auth-callback");
     };
 
     return (
@@ -38,6 +38,6 @@ function Auth0ProviderWithNavigation(props: { children: React.ReactNode}) {
   );
 }
 
-Auth0ProviderWithNavigation.propTypes = {}; 
+// Auth0ProviderWithNavigation.propTypes = {}; 
 
-export default Auth0ProviderWithNavigation
+export default Auth0ProviderWithNavigation;

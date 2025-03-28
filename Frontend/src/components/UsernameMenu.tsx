@@ -17,12 +17,26 @@ function UsernameMenu() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
             <DropdownMenuItem>
+                <Link to="/manage-restaurant"
+                className="font-bold hover:text-pink-500">
+                Manage Restaurant
+                </Link>
+            </DropdownMenuItem>
+            
+            <Separator />
+            
+            <DropdownMenuItem>
                 <Link to="/user-profile"
                 className="font-bold hover:text-pink-500">
-                User Profiles
+                User Profile
                 </Link>
             </DropdownMenuItem>
             <Separator />
+            <DropdownMenuItem>
+                <Button onClick={()=> logout()}className="flex flex-1 font-bold bg-pink-500">
+                Logout
+                </Button>
+            </DropdownMenuItem>
             <DropdownMenuItem>
                 <Button onClick={()=> logout()}className="flex flex-1 font-bold bg-pink-500">
                 Logout

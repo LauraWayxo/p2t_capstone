@@ -17,7 +17,7 @@ export default function MobileNav() {
             <SheetTitle>
                 {isAuthenticated ? ( 
                     <span className="flex items-center font-bold gap-2">
-                        <CircleUserRound className="text-orange-500" />
+                        <CircleUserRound className="text-pink-500" />
                         {user?.email}
                     </span> 
                 ) : (
